@@ -13,3 +13,6 @@ __pycache__/
 # IDEs
 .vscode/
 .idea/
+
+DataSets/dataset_tratado_v5.csv
+DataSets/drug_interactions_dataset.csv
