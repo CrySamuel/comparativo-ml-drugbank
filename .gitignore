@@ -1,0 +1,15 @@
+# Ambientes Virtuais
+venv_tcc/
+.venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/

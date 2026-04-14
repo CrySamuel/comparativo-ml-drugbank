@@ -1,0 +1,38 @@
+RESULTADOS DA VALIDAÇÃO CRUZADA (BASELINE) - SPLIT 50_25_25
+==================================================
+
+Modelo: SVM (Linear)
+Acurácia Média: 0.854326
+Recall Médio: 0.854326
+F1-Score (Macro) Médio: 0.821960
+Tempo de Execução (CV): 11.84 s
+--------------------------------------------------
+
+Modelo: Random Forest
+Acurácia Média: 0.816588
+Recall Médio: 0.816588
+F1-Score (Macro) Médio: 0.755648
+Tempo de Execução (CV): 610.70 s
+--------------------------------------------------
+
+Modelo: XGBoost
+Acurácia Média: 0.715383
+Recall Médio: 0.715383
+F1-Score (Macro) Médio: 0.618760
+Tempo de Execução (CV): 72.23 s
+--------------------------------------------------
+
+Modelo: Complement Naive Bayes
+Acurácia Média: 0.827653
+Recall Médio: 0.827653
+F1-Score (Macro) Médio: 0.763874
+Tempo de Execução (CV): 4.15 s
+--------------------------------------------------
+
+Modelo: KNN (5 Vizinhos)
+Acurácia Média: 0.725278
+Recall Médio: 0.725278
+F1-Score (Macro) Médio: 0.644468
+Tempo de Execução (CV): 873.06 s
+--------------------------------------------------
+
