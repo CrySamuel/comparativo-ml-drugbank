@@ -1,0 +1,32 @@
+RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 90_5_5
+============================================================
+
+Modelo: SVM (Linear)
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 4, 'clf__C': 14.1476425365513}
+Acurácia Média (Validação): 0.860380
+Recall Médio (Validação): 0.860387
+F1-Score (Macro) (Validação): 0.859547
+Tempo de Busca (Optuna): 50.70 s
+--------------------------------------------------
+
+Modelo: Complement Naive Bayes
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__alpha': 0.1583054805644104}
+Acurácia Média (Validação): 0.829010
+Recall Médio (Validação): 0.829018
+F1-Score (Macro) (Validação): 0.828046
+Tempo de Busca (Optuna): 26.69 s
+--------------------------------------------------
+
+Modelo: Regressão Logística
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__C': 9.3729185915738}
+Acurácia Média (Validação): 0.865999
+Recall Médio (Validação): 0.866005
+F1-Score (Macro) (Validação): 0.865298
+Tempo de Busca (Optuna): 71.22 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
+Acurácia (Teste): 0.872378
+Recall (Teste): 0.872378
+F1-Score (Teste): 0.871732
+============================================================

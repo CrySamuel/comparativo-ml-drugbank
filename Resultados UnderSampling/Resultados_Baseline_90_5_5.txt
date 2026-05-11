@@ -5,7 +5,7 @@ Modelo: SVM (Linear)
 Acurácia Média: 0.858110
 Recall Médio: 0.858110
 F1-Score (Macro) Médio: 0.857288
-Tempo de Execução (CV): 4.30 s
+Tempo de Execução (CV): 3.42 s
 --------------------------------------------------
 
 Modelo: Random Forest
@@ -26,7 +26,14 @@ Modelo: Complement Naive Bayes
 Acurácia Média: 0.822381
 Recall Médio: 0.822381
 F1-Score (Macro) Médio: 0.821419
-Tempo de Execução (CV): 3.02 s
+Tempo de Execução (CV): 1.28 s
+--------------------------------------------------
+
+Modelo: Regressão Logística
+Acurácia Média: 0.860414
+Recall Médio: 0.860414
+F1-Score (Macro) Médio: 0.859749
+Tempo de Execução (CV): 4.84 s
 --------------------------------------------------
 
 Modelo: KNN (5 Vizinhos)
@@ -35,4 +42,3 @@ Recall Médio: 0.674997
 F1-Score (Macro) Médio: 0.668442
 Tempo de Execução (CV): 161.29 s
 --------------------------------------------------
-

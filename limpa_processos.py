@@ -1,7 +1,6 @@
 import psutil
 import time
 
-# Lista de processos inúteis que identificamos nos seus prints
 PROCESSOS_ALVO = [
     "brave.exe",
     "whatsapp.exe",
@@ -20,12 +19,11 @@ PROCESSOS_ALVO = [
     "steamclientbootstrapper.exe"
 ]
 
-# Trava de segurança: Processos que o script é PROIBIDO de fechar
 PROCESSOS_PROTEGIDOS = [
-    "powershell.exe",  # Seu bot FinAI
-    "pwsh.exe",        # PowerShell Core (garantia extra)
-    "code.exe",        # VS Code (Seu TCC)
-    "python.exe",      # O motor do seu TCC e do script
+    "powershell.exe",
+    "pwsh.exe",        
+    "code.exe",        
+    "python.exe",      
     "cmd.exe"
 ]
 
@@ -37,7 +35,6 @@ def liberar_recursos_seguro():
         try:
             nome_processo = proc.info['name'].lower() if proc.info['name'] else ""
             
-            # Se por acaso o nome do processo bater com a lista de protegidos, pula na hora
             if nome_processo in PROCESSOS_PROTEGIDOS:
                 continue
 

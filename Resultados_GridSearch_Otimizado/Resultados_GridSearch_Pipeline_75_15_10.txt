@@ -41,8 +41,16 @@ F1-Score (Macro) Médio (Validação): 0.660411
 Tempo de Execução (CV): 476.04 s
 --------------------------------------------------
 
-RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: SVM (Linear))
-Acurácia (Teste): 0.864226
-Recall (Teste): 0.864229
-F1-Score (Teste): 0.863431
+Modelo: Regressão Logística
+Melhores Hiperparâmetros: {'clf__C': 10.0, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+Acurácia Média (Validação): 0.865285
+Recall Médio (Validação): 0.865283
+F1-Score (Macro) Médio (Validação): 0.864668
+Tempo de Execução (CV): 51.77 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
+Acurácia (Teste): 0.868486
+Recall (Teste): 0.868489
+F1-Score (Teste): 0.867837
 ============================================================

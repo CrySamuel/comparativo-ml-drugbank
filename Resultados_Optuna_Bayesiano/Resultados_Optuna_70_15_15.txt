@@ -2,11 +2,11 @@ RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 70_15_15
 ============================================================
 
 Modelo: SVM (Linear)
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 4, 'clf__C': 11.265401512071893}
-Acurácia Média (Validação): 0.859823
-Recall Médio (Validação): 0.859825
-F1-Score (Macro) (Validação): 0.858999
-Tempo de Busca (Optuna): 40.86 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__C': 14.629155839712364}
+Acurácia Média (Validação): 0.860104
+Recall Médio (Validação): 0.860105
+F1-Score (Macro) (Validação): 0.859279
+Tempo de Busca (Optuna): 44.78 s
 --------------------------------------------------
 
 Modelo: XGBoost
@@ -18,15 +18,23 @@ Tempo de Busca (Optuna): 2089.48 s
 --------------------------------------------------
 
 Modelo: Complement Naive Bayes
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 0.999264175721339}
-Acurácia Média (Validação): 0.827486
-Recall Médio (Validação): 0.827488
-F1-Score (Macro) (Validação): 0.826501
-Tempo de Busca (Optuna): 23.63 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 4, 'clf__alpha': 0.12346707883144988}
+Acurácia Média (Validação): 0.826175
+Recall Médio (Validação): 0.826177
+F1-Score (Macro) (Validação): 0.825182
+Tempo de Busca (Optuna): 20.29 s
 --------------------------------------------------
 
-RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: SVM (Linear))
-Acurácia (Teste): 0.863568
-Recall (Teste): 0.863568
-F1-Score (Teste): 0.862852
+Modelo: Regressão Logística
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 5, 'clf__C': 13.986888696335251}
+Acurácia Média (Validação): 0.861976
+Recall Médio (Validação): 0.861978
+F1-Score (Macro) (Validação): 0.861198
+Tempo de Busca (Optuna): 56.93 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
+Acurácia (Teste): 0.864973
+Recall (Teste): 0.864973
+F1-Score (Teste): 0.864306
 ============================================================

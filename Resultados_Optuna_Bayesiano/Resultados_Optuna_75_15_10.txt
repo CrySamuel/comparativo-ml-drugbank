@@ -2,10 +2,31 @@ RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 75_15_10
 ============================================================
 
 Modelo: SVM (Linear)
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 4, 'clf__C': 12.953528178980779}
-Acurácia Média (Validação): 0.859854
-Recall Médio (Validação): 0.859852
-F1-Score (Macro) (Validação): 0.859101
-Tempo de Busca (Optuna): 37.24 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 4, 'clf__C': 14.6211695493232}
+Acurácia Média (Validação): 0.862663
+Recall Médio (Validação): 0.862661
+F1-Score (Macro) (Validação): 0.861947
+Tempo de Busca (Optuna): 42.98 s
 --------------------------------------------------
 
+Modelo: Complement Naive Bayes
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 1.1300166887541703}
+Acurácia Média (Validação): 0.825551
+Recall Médio (Validação): 0.825548
+F1-Score (Macro) (Validação): 0.824638
+Tempo de Busca (Optuna): 23.81 s
+--------------------------------------------------
+
+Modelo: Regressão Logística
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__C': 12.384860373516634}
+Acurácia Média (Validação): 0.865816
+Recall Médio (Validação): 0.865814
+F1-Score (Macro) (Validação): 0.865212
+Tempo de Busca (Optuna): 63.65 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
+Acurácia (Teste): 0.868720
+Recall (Teste): 0.868723
+F1-Score (Teste): 0.868088
+============================================================
