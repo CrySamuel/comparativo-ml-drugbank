@@ -1,0 +1,11 @@
+RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 75_15_10
+============================================================
+
+Modelo: SVM (Linear)
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 4, 'clf__C': 12.953528178980779}
+Acurácia Média (Validação): 0.859854
+Recall Médio (Validação): 0.859852
+F1-Score (Macro) (Validação): 0.859101
+Tempo de Busca (Optuna): 37.24 s
+--------------------------------------------------
+

@@ -1,0 +1,48 @@
+RESULTADOS GRID SEARCH OTIMIZADO - SPLIT 60_20_20
+============================================================
+
+Modelo: SVM (Linear)
+Melhores Hiperparâmetros: {'clf__C': 10.0, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+Acurácia Média (Validação): 0.858534
+Recall Médio (Validação): 0.858534
+F1-Score (Macro) Médio (Validação): 0.857603
+Tempo de Execução (CV): 21.57 s
+--------------------------------------------------
+
+Modelo: Random Forest
+Melhores Hiperparâmetros: {'clf__max_depth': None, 'clf__n_estimators': 200, 'tfidf__min_df': 5, 'tfidf__ngram_range': (1, 1)}
+Acurácia Média (Validação): 0.807945
+Recall Médio (Validação): 0.807945
+F1-Score (Macro) Médio (Validação): 0.806062
+Tempo de Execução (CV): 839.74 s
+--------------------------------------------------
+
+Modelo: XGBoost
+Melhores Hiperparâmetros: {'clf__learning_rate': 0.2, 'clf__max_depth': 7, 'clf__n_estimators': 200, 'tfidf__min_df': 5, 'tfidf__ngram_range': (1, 1)}
+Acurácia Média (Validação): 0.725683
+Recall Médio (Validação): 0.725683
+F1-Score (Macro) Médio (Validação): 0.722212
+Tempo de Execução (CV): 188.26 s
+--------------------------------------------------
+
+Modelo: Complement Naive Bayes
+Melhores Hiperparâmetros: {'clf__alpha': 0.5, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+Acurácia Média (Validação): 0.822576
+Recall Médio (Validação): 0.822576
+F1-Score (Macro) Médio (Validação): 0.821539
+Tempo de Execução (CV): 10.38 s
+--------------------------------------------------
+
+Modelo: KNN (Vizinhos)
+Melhores Hiperparâmetros: {'clf__n_neighbors': 5, 'clf__weights': 'distance', 'tfidf__min_df': 5, 'tfidf__ngram_range': (1, 1)}
+Acurácia Média (Validação): 0.651778
+Recall Médio (Validação): 0.651778
+F1-Score (Macro) Médio (Validação): 0.647736
+Tempo de Execução (CV): 296.43 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: SVM (Linear))
+Acurácia (Teste): 0.860688
+Recall (Teste): 0.860688
+F1-Score (Teste): 0.859946
+============================================================

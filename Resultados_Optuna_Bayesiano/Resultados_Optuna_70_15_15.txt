@@ -1,0 +1,32 @@
+RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 70_15_15
+============================================================
+
+Modelo: SVM (Linear)
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 4, 'clf__C': 11.265401512071893}
+Acurácia Média (Validação): 0.859823
+Recall Médio (Validação): 0.859825
+F1-Score (Macro) (Validação): 0.858999
+Tempo de Busca (Optuna): 40.86 s
+--------------------------------------------------
+
+Modelo: XGBoost
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__n_estimators': 154, 'clf__max_depth': 10, 'clf__learning_rate': 0.2885746354378311}
+Acurácia Média (Validação): 0.770429
+Recall Médio (Validação): 0.770430
+F1-Score (Macro) (Validação): 0.768790
+Tempo de Busca (Optuna): 2089.48 s
+--------------------------------------------------
+
+Modelo: Complement Naive Bayes
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 0.999264175721339}
+Acurácia Média (Validação): 0.827486
+Recall Médio (Validação): 0.827488
+F1-Score (Macro) (Validação): 0.826501
+Tempo de Busca (Optuna): 23.63 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: SVM (Linear))
+Acurácia (Teste): 0.863568
+Recall (Teste): 0.863568
+F1-Score (Teste): 0.862852
+============================================================

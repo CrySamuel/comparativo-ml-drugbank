@@ -95,8 +95,8 @@ def salvar_matriz_confusao(modelo: Pipeline, X_train: pd.Series, y_train: np.nda
 def main():
     tempo_inicio_geral = time.time()
     
-    caminho_dataset = r'C:\Users\cryst\Documents\TCC\DataSets\dataset_tratado_v5.csv'
-    pasta_resultados = r'C:\Users\cryst\Documents\TCC\Resultado'
+    caminho_dataset = r'C:\Users\cryst\Documents\TCC\DataSets\dataset_tratado_v5_undersampled.csv'
+    pasta_resultados = r'C:\Users\cryst\Documents\TCC\Resultados UnderSampling'
     os.makedirs(pasta_resultados, exist_ok=True)
 
     print("Carregando o dataset tratado v5...")
