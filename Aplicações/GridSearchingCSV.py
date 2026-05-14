@@ -12,8 +12,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import ComplementNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import LinearSVC
+from sklearn.linear_model import LogisticRegression
 from xgboost import XGBClassifier
-from sklearn.metrics import accuracy_score, recall_score, f1_score, confusion_matrix
+from sklearn.metrics import accuracy_score, recall_score, f1_score, confusion_matrix, precision_score, classification_report
 from sklearn.preprocessing import LabelEncoder
 from sklearn.pipeline import Pipeline
 
@@ -44,35 +45,67 @@ def split_treino_val_teste(
     
     return X_train, X_val, X_test, y_train, y_val, y_test
 
-# ==============================================================================
-# SCRIPT PRINCIPAL
-# ==============================================================================
 print("="*60)
-print("INICIANDO PIPELINE AVANÇADO DE GRID SEARCH (OTIMIZADO PARA F1-SCORE)")
+print("INICIANDO PIPELINE AVANÇADO DE GRID SEARCH (MODO LOCAL SEGURO)")
 print("="*60)
 
 tempo_inicio_geral = time.time()
 
-# 1. Configuração de Diretórios
-pasta_resultados = r'C:\Users\cryst\Documents\TCC\Resultados_GridSearch_Otimizado'
+# Ajustado para salvar na pasta atual do projeto
+pasta_resultados = r'Resultados_GridSearch_Local'
 os.makedirs(pasta_resultados, exist_ok=True)
 
-# 2. Carregamento e Encoding
-caminho_dataset_limpo = r'C:\Users\cryst\Documents\TCC\DataSets\dataset_tratado_v5_undersampled.csv'
+# Mantido o seu caminho local
+caminho_dataset = r'C:\Users\cryst\Documents\TCC\DataSets\dataset_tratado_v5_undersampled.csv'
 print("Carregando o dataset tratado...")
-df = pd.read_csv(caminho_dataset_limpo, sep=';', encoding='utf-8', on_bad_lines='skip')
+df = pd.read_csv(caminho_dataset, sep=';', encoding='utf-8', on_bad_lines='skip')
 
 X = df['text'] 
 encoder = LabelEncoder()
 y = encoder.fit_transform(df['label'])
 nomes_classes = encoder.classes_ 
 
-# 3. Dicionário de Pipelines (SEM LIMITAÇÕES DE PALAVRAS E COM KNN OTIMIZADO PARA TEXTO)
+# ESQUADRÃO COM TRAVAS DE MEMÓRIA (n_jobs=2 adicionado onde necessário)
 modelos_params = {
     'SVM (Linear)': { 
         'pipeline': Pipeline([
-            ('tfidf', TfidfVectorizer()), # LIVRE: Lê 100% do dataset
+            ('tfidf', TfidfVectorizer()), 
             ('clf', LinearSVC(class_weight='balanced', random_state=42, dual=False))
+        ]),
+        'params': { 
+            'tfidf__ngram_range': [(1, 1), (1, 2)],
+            'tfidf__min_df': [2, 5],
+            'clf__C': [0.1, 1.0, 10.0] 
+        }
+    },
+    'XGBoost': {
+         'pipeline': Pipeline([
+             ('tfidf', TfidfVectorizer()),
+             ('clf', XGBClassifier(random_state=42, eval_metric='mlogloss', n_jobs=2))
+         ]),
+         'params': {
+             'tfidf__ngram_range': [(1, 1)], 
+             'tfidf__min_df': [5],
+             'clf__n_estimators': [100, 200],
+             'clf__learning_rate': [0.1, 0.2],
+             'clf__max_depth': [3, 7] 
+         }
+    },
+    'Complement Naive Bayes': {
+        'pipeline': Pipeline([
+            ('tfidf', TfidfVectorizer()),
+            ('clf', ComplementNB())
+        ]),
+        'params': { 
+            'tfidf__ngram_range': [(1, 1), (1, 2)],
+            'tfidf__min_df': [2, 5],
+            'clf__alpha': [0.1, 0.5, 1.0] 
+        }
+    },
+    'Regressão Logística': {
+        'pipeline': Pipeline([
+            ('tfidf', TfidfVectorizer()), 
+            ('clf', LogisticRegression(class_weight='balanced', max_iter=1000, random_state=42))
         ]),
         'params': { 
             'tfidf__ngram_range': [(1, 1), (1, 2)],
@@ -82,66 +115,39 @@ modelos_params = {
     },
     'Random Forest': {
          'pipeline': Pipeline([
-             ('tfidf', TfidfVectorizer()), # LIVRE
-             ('clf', RandomForestClassifier(class_weight='balanced', random_state=42))
+            ('tfidf', TfidfVectorizer()),
+            ('clf', RandomForestClassifier(class_weight='balanced', random_state=42, n_jobs=2))
          ]),
          'params': {
-             'tfidf__ngram_range': [(1, 1)], 
-             'tfidf__min_df': [5],
-             'clf__n_estimators': [100, 200],
-             'clf__max_depth': [20, None] 
+            'tfidf__ngram_range': [(1, 1)], 
+            'tfidf__min_df': [5],
+            'clf__n_estimators': [100, 200],
+            'clf__max_depth': [20, None] 
          }
-     },
-    'XGBoost': {
-         'pipeline': Pipeline([
-             ('tfidf', TfidfVectorizer()), # LIVRE
-             ('clf', XGBClassifier(random_state=42, eval_metric='mlogloss'))
-         ]),
-         'params': {
-             'tfidf__ngram_range': [(1, 1)], 
-             'tfidf__min_df': [5],
-             'clf__n_estimators': [100, 200],
-             'clf__learning_rate': [0.1, 0.2],
-             'clf__max_depth': [3, 7] 
-         }
-     },
-    'Complement Naive Bayes': {
-        'pipeline': Pipeline([
-            ('tfidf', TfidfVectorizer()), # LIVRE
-            ('clf', ComplementNB())
-        ]),
-        'params': { 
-            'tfidf__ngram_range': [(1, 1), (1, 2)],
-            'tfidf__min_df': [2, 5],
-            'clf__alpha': [0.1, 0.5, 1.0] 
-        }
     },
      'KNN (Vizinhos)': {
          'pipeline': Pipeline([
-             ('tfidf', TfidfVectorizer()), # LIVRE: Sem limite de max_features
-             # O SEGREDO AQUI: Distância por Cosseno e Brute Force evitam o estouro de RAM com textos
-             ('clf', KNeighborsClassifier(metric='cosine', algorithm='brute'))
+            ('tfidf', TfidfVectorizer()),
+            ('clf', KNeighborsClassifier(metric='cosine', algorithm='brute', n_jobs=2))
          ]),
          'params': {
-             'tfidf__ngram_range': [(1, 1)], 
-             'tfidf__min_df': [5],
-             'clf__n_neighbors': [3, 5],
-             'clf__weights': ['uniform', 'distance'] 
-         }
-     }
+            'tfidf__ngram_range': [(1, 1)], 
+            'tfidf__min_df': [5],
+            'clf__n_neighbors': [3, 5],
+            'clf__weights': ['uniform', 'distance'] 
+        }
+    }
 }
 
-# 4. Configuração das Baterias de Splits
 configuracoes_splits = [
      (0.70, 0.15, 0.15),
-    (0.80, 0.10, 0.10),
+     (0.80, 0.10, 0.10),
      (0.60, 0.20, 0.20),
      (0.75, 0.15, 0.10),
      (0.90, 0.05, 0.05),
      (0.50, 0.25, 0.25),
-]pip
+]
 
-# 5. Loop Principal por cada Split
 for treino_pct, val_pct, teste_pct in configuracoes_splits:
     nome_split = f"{int(treino_pct*100)}_{int(val_pct*100)}_{int(teste_pct*100)}"
     
@@ -151,7 +157,7 @@ for treino_pct, val_pct, teste_pct in configuracoes_splits:
     
     arquivo_txt = os.path.join(pasta_resultados, f'Resultados_GridSearch_Pipeline_{nome_split}.txt')
     with open(arquivo_txt, 'w', encoding='utf-8') as f:
-        f.write(f"RESULTADOS GRID SEARCH OTIMIZADO - SPLIT {nome_split}\n")
+        f.write(f"RESULTADOS GRID SEARCH OTIMIZADO (MODO LOCAL) - SPLIT {nome_split}\n")
         f.write("="*60 + "\n\n")
 
     X_train, X_val, X_test, y_train, y_val, y_test = split_treino_val_teste(
@@ -163,12 +169,13 @@ for treino_pct, val_pct, teste_pct in configuracoes_splits:
     for nome_modelo, config in modelos_params.items():
         print(f"Rodando Grid Search para {nome_modelo} no split {nome_split}...")
         
+        # MODO LOCAL ATIVADO: n_jobs=2 na validação cruzada
         grid_search = GridSearchCV(
             estimator=config['pipeline'], 
             param_grid=config['params'],
             scoring='f1_macro', 
             cv=3, 
-            n_jobs=2, # Usa 2 núcleos
+            n_jobs=2, 
             pre_dispatch='2*n_jobs',
             verbose=2 
         )
@@ -181,6 +188,7 @@ for treino_pct, val_pct, teste_pct in configuracoes_splits:
         y_pred_val = melhor_modelo.predict(X_val)
         
         acc_val = accuracy_score(y_val, y_pred_val)
+        precisao_val = precision_score(y_val, y_pred_val, average='macro')
         recall_val = recall_score(y_val, y_pred_val, average='macro')
         f1_val = f1_score(y_val, y_pred_val, average='macro')
         
@@ -193,7 +201,8 @@ for treino_pct, val_pct, teste_pct in configuracoes_splits:
             f"Modelo: {nome_modelo}\n"
             f"Melhores Hiperparâmetros: {grid_search.best_params_}\n"
             f"Acurácia Média (Validação): {acc_val:.6f}\n"
-            f"Recall Médio (Validação): {recall_val:.6f}\n"
+            f"Precisão Média (Validação): {precisao_val:.6f}\n"
+            f"Recall/Cobertura Média (Validação): {recall_val:.6f}\n"
             f"F1-Score (Macro) Médio (Validação): {f1_val:.6f}\n"
             f"Tempo de Execução (CV): {tempo_mod:.2f} s\n"
             f"{'-'*50}\n\n"
@@ -221,12 +230,19 @@ for treino_pct, val_pct, teste_pct in configuracoes_splits:
     print("Avaliando o melhor modelo no conjunto de Teste...")
 
     y_pred_teste = modelo_final.predict(X_test)
+    precisao_teste = precision_score(y_test, y_pred_teste, average='macro')
+    
+    relatorio_classes = classification_report(y_test, y_pred_teste, target_names=nomes_classes)
     
     texto_teste = (
         f"RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: {nome_melhor_modelo})\n"
         f"Acurácia (Teste): {accuracy_score(y_test, y_pred_teste):.6f}\n"
-        f"Recall (Teste): {recall_score(y_test, y_pred_teste, average='macro'):.6f}\n"
+        f"Precisão (Teste): {precisao_teste:.6f}\n"
+        f"Recall/Cobertura (Teste): {recall_score(y_test, y_pred_teste, average='macro'):.6f}\n"
         f"F1-Score (Teste): {f1_score(y_test, y_pred_teste, average='macro'):.6f}\n"
+        f"{'='*60}\n"
+        f"\n--- DETALHAMENTO POR CLASSE (PRECISÃO E COBERTURA) ---\n"
+        f"{relatorio_classes}\n"
         f"{'='*60}\n"
     )
     print(texto_teste)
