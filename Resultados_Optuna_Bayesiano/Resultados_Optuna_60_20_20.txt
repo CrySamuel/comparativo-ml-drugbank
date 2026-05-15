@@ -2,39 +2,75 @@ RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 60_20_20
 ============================================================
 
 Modelo: SVM (Linear)
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 3, 'clf__C': 13.239347385960434}
-Acurácia Média (Validação): 0.857364
-Recall Médio (Validação): 0.857364
-F1-Score (Macro) (Validação): 0.856435
-Tempo de Busca (Optuna): 27.96 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 2, 'clf__C': 14.349526944123065}
+Acurácia Média (Validação): 0.857762
+Precisão Média (Validação): 0.857394
+Recall/Cobertura Média (Validação): 0.857762
+F1-Score (Macro) (Validação): 0.856822
+Tempo de Busca (Optuna): 21.34 s
+--------------------------------------------------
+
+Modelo: Random Forest
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__n_estimators': 161}
+Acurácia Média (Validação): 0.813728
+Precisão Média (Validação): 0.813250
+Recall/Cobertura Média (Validação): 0.813728
+F1-Score (Macro) (Validação): 0.812164
+Tempo de Busca (Optuna): 3103.93 s
 --------------------------------------------------
 
 Modelo: XGBoost
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 5, 'clf__n_estimators': 115, 'clf__max_depth': 9, 'clf__learning_rate': 0.17222586069222548}
-Acurácia Média (Validação): 0.705995
-Recall Médio (Validação): 0.705995
-F1-Score (Macro) (Validação): 0.703884
-Tempo de Busca (Optuna): 2487.10 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__n_estimators': 194, 'clf__max_depth': 12, 'clf__learning_rate': 0.2984181989538838}
+Acurácia Média (Validação): 0.794391
+Precisão Média (Validação): 0.793287
+Recall/Cobertura Média (Validação): 0.794391
+F1-Score (Macro) (Validação): 0.793087
+Tempo de Busca (Optuna): 2017.45 s
 --------------------------------------------------
 
 Modelo: Complement Naive Bayes
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 1.6033155974844289}
-Acurácia Média (Validação): 0.822202
-Recall Médio (Validação): 0.822202
-F1-Score (Macro) (Validação): 0.821068
-Tempo de Busca (Optuna): 16.45 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 0.39784407621774515}
+Acurácia Média (Validação): 0.822530
+Precisão Média (Validação): 0.823782
+Recall/Cobertura Média (Validação): 0.822530
+F1-Score (Macro) (Validação): 0.821491
+Tempo de Busca (Optuna): 23.62 s
+--------------------------------------------------
+
+Modelo: KNN (Vizinhos)
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 2, 'clf__n_neighbors': 7, 'clf__weights': 'distance'}
+Acurácia Média (Validação): 0.672636
+Precisão Média (Validação): 0.712828
+Recall/Cobertura Média (Validação): 0.672636
+F1-Score (Macro) (Validação): 0.665423
+Tempo de Busca (Optuna): 683.14 s
 --------------------------------------------------
 
 Modelo: Regressão Logística
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__C': 10.856199197191286}
-Acurácia Média (Validação): 0.862584
-Recall Médio (Validação): 0.862584
-F1-Score (Macro) (Validação): 0.861826
-Tempo de Busca (Optuna): 47.66 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__C': 13.914617382587956}
+Acurácia Média (Validação): 0.862701
+Precisão Média (Validação): 0.862153
+Recall/Cobertura Média (Validação): 0.862701
+F1-Score (Macro) (Validação): 0.861945
+Tempo de Busca (Optuna): 37.50 s
 --------------------------------------------------
 
 RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
-Acurácia (Teste): 0.865651
-Recall (Teste): 0.865651
-F1-Score (Teste): 0.865031
+Acurácia (Teste): 0.865417
+Precisão (Teste): 0.864893
+Recall/Cobertura (Teste): 0.865417
+F1-Score (Teste): 0.864788
+============================================================
+
+--- DETALHAMENTO POR CLASSE (PRECISÃO E COBERTURA) ---
+              precision    recall  f1-score   support
+
+       grave       0.88      0.93      0.91     14239
+        leve       0.86      0.85      0.85     14239
+    moderado       0.85      0.82      0.83     14239
+
+    accuracy                           0.87     42717
+   macro avg       0.86      0.87      0.86     42717
+weighted avg       0.86      0.87      0.86     42717
+
 ============================================================

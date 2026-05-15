@@ -2,47 +2,75 @@ RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 80_10_10
 ============================================================
 
 Modelo: SVM (Linear)
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__C': 12.330939017690737}
-Acurácia Média (Validação): 0.862393
-Recall Médio (Validação): 0.862390
-F1-Score (Macro) (Validação): 0.861650
-Tempo de Busca (Optuna): 49.47 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__C': 11.727064552650118}
+Acurácia Média (Validação): 0.862581
+Precisão Média (Validação): 0.862189
+Recall/Cobertura Média (Validação): 0.862578
+F1-Score (Macro) (Validação): 0.861839
+Tempo de Busca (Optuna): 51.81 s
 --------------------------------------------------
 
 Modelo: Random Forest
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 5, 'clf__n_estimators': 194}
-Acurácia Média (Validação): 0.820395
-Recall Médio (Validação): 0.820391
-F1-Score (Macro) (Validação): 0.819061
-Tempo de Busca (Optuna): 6063.48 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__n_estimators': 250}
+Acurácia Média (Validação): 0.821659
+Precisão Média (Validação): 0.821258
+Recall/Cobertura Média (Validação): 0.821655
+F1-Score (Macro) (Validação): 0.820366
+Tempo de Busca (Optuna): 4496.74 s
 --------------------------------------------------
 
 Modelo: XGBoost
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__n_estimators': 194, 'clf__max_depth': 8, 'clf__learning_rate': 0.2258200220769795}
-Acurácia Média (Validação): 0.751662
-Recall Médio (Validação): 0.751657
-F1-Score (Macro) (Validação): 0.749643
-Tempo de Busca (Optuna): 3268.28 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 4, 'clf__n_estimators': 148, 'clf__max_depth': 12, 'clf__learning_rate': 0.29601727108799014}
+Acurácia Média (Validação): 0.782002
+Precisão Média (Validação): 0.780909
+Recall/Cobertura Média (Validação): 0.781997
+F1-Score (Macro) (Validação): 0.780517
+Tempo de Busca (Optuna): 2288.54 s
 --------------------------------------------------
 
 Modelo: Complement Naive Bayes
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 1.41179338110243}
-Acurácia Média (Validação): 0.825639
-Recall Médio (Validação): 0.825635
-F1-Score (Macro) (Validação): 0.824581
-Tempo de Busca (Optuna): 26.31 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 0.570887536230873}
+Acurácia Média (Validação): 0.826856
+Precisão Média (Validação): 0.828324
+Recall/Cobertura Média (Validação): 0.826853
+F1-Score (Macro) (Validação): 0.825847
+Tempo de Busca (Optuna): 28.96 s
 --------------------------------------------------
 
 Modelo: KNN (Vizinhos)
 Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 3, 'clf__n_neighbors': 7, 'clf__weights': 'distance'}
 Acurácia Média (Validação): 0.676889
-Recall Médio (Validação): 0.676878
+Precisão Média (Validação): 0.711533
+Recall/Cobertura Média (Validação): 0.676878
 F1-Score (Macro) (Validação): 0.670587
-Tempo de Busca (Optuna): 2606.81 s
+Tempo de Busca (Optuna): 1517.18 s
 --------------------------------------------------
 
-RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: SVM (Linear))
-Acurácia (Teste): 0.864788
-Recall (Teste): 0.864791
-F1-Score (Teste): 0.863917
+Modelo: Regressão Logística
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__C': 13.63998660832711}
+Acurácia Média (Validação): 0.865203
+Precisão Média (Validação): 0.864658
+Recall/Cobertura Média (Validação): 0.865200
+F1-Score (Macro) (Validação): 0.864585
+Tempo de Busca (Optuna): 52.39 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
+Acurácia (Teste): 0.869095
+Precisão (Teste): 0.868619
+Recall/Cobertura (Teste): 0.869098
+F1-Score (Teste): 0.868431
+============================================================
+
+--- DETALHAMENTO POR CLASSE (PRECISÃO E COBERTURA) ---
+              precision    recall  f1-score   support
+
+       grave       0.88      0.93      0.91      7119
+        leve       0.86      0.86      0.86      7120
+    moderado       0.86      0.81      0.84      7120
+
+    accuracy                           0.87     21359
+   macro avg       0.87      0.87      0.87     21359
+weighted avg       0.87      0.87      0.87     21359
+
 ============================================================

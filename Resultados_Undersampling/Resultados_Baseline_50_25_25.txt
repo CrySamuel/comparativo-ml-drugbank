@@ -1,0 +1,70 @@
+RESULTADOS DA VALIDAÇÃO CRUZADA (BASELINE) - SPLIT 50_25_25
+==================================================
+
+Modelo: SVM (Linear)
+Acurácia Média: 0.853528
+Precisão Média: 0.853287
+Recall/Cobertura Média: 0.853528
+F1-Score (Macro) Médio: 0.852647
+Tempo de Execução (CV): 3.15 s
+--------------------------------------------------
+
+Modelo: XGBoost
+Acurácia Média: 0.687186
+Precisão Média: 0.686194
+Recall/Cobertura Média: 0.687185
+F1-Score (Macro) Médio: 0.682850
+Tempo de Execução (CV): 40.72 s
+--------------------------------------------------
+
+Modelo: Complement Naive Bayes
+Acurácia Média: 0.818544
+Precisão Média: 0.820025
+Recall/Cobertura Média: 0.818544
+F1-Score (Macro) Médio: 0.817544
+Tempo de Execução (CV): 1.25 s
+--------------------------------------------------
+
+Modelo: KNN (Vizinhos)
+Acurácia Média: 0.668149
+Precisão Média: 0.713539
+Recall/Cobertura Média: 0.668147
+F1-Score (Macro) Médio: 0.660637
+Tempo de Execução (CV): 79.47 s
+--------------------------------------------------
+
+Modelo: Regressão Logística
+Acurácia Média: 0.853697
+Precisão Média: 0.853324
+Recall/Cobertura Média: 0.853696
+F1-Score (Macro) Médio: 0.852969
+Tempo de Execução (CV): 4.18 s
+--------------------------------------------------
+
+Modelo: Random Forest
+Acurácia Média: 0.794095
+Precisão Média: 0.793331
+Recall/Cobertura Média: 0.794094
+F1-Score (Macro) Médio: 0.792359
+Tempo de Execução (CV): 207.47 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
+Acurácia (Teste): 0.857052
+Precisão (Teste): 0.856625
+Recall/Cobertura (Teste): 0.857052
+F1-Score (Teste): 0.856307
+============================================================
+
+--- DETALHAMENTO POR CLASSE (PRECISÃO E COBERTURA) ---
+              precision    recall  f1-score   support
+
+       grave       0.87      0.92      0.90     17799
+        leve       0.85      0.85      0.85     17799
+    moderado       0.85      0.80      0.82     17799
+
+    accuracy                           0.86     53397
+   macro avg       0.86      0.86      0.86     53397
+weighted avg       0.86      0.86      0.86     53397
+
+============================================================

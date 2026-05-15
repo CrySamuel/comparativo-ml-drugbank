@@ -1,0 +1,76 @@
+RESULTADOS GRID SEARCH OTIMIZADO (MODO LOCAL) - SPLIT 70_15_15
+============================================================
+
+Modelo: SVM (Linear)
+Melhores Hiperparâmetros: {'clf__C': 10.0, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+Acurácia Média (Validação): 0.860228
+Precisão Média (Validação): 0.859789
+Recall/Cobertura Média (Validação): 0.860230
+F1-Score (Macro) Médio (Validação): 0.859401
+Tempo de Execução (CV): 27.60 s
+--------------------------------------------------
+
+Modelo: XGBoost
+Melhores Hiperparâmetros: {'clf__learning_rate': 0.2, 'clf__max_depth': 7, 'clf__n_estimators': 200, 'tfidf__min_df': 5, 'tfidf__ngram_range': (1, 1)}
+Acurácia Média (Validação): 0.727449
+Precisão Média (Validação): 0.727187
+Recall/Cobertura Média (Validação): 0.727450
+F1-Score (Macro) Médio (Validação): 0.723790
+Tempo de Execução (CV): 312.56 s
+--------------------------------------------------
+
+Modelo: Complement Naive Bayes
+Melhores Hiperparâmetros: {'clf__alpha': 0.1, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+Acurácia Média (Validação): 0.828173
+Precisão Média (Validação): 0.829250
+Recall/Cobertura Média (Validação): 0.828175
+F1-Score (Macro) Médio (Validação): 0.827233
+Tempo de Execução (CV): 13.59 s
+--------------------------------------------------
+
+Modelo: Regressão Logística
+Melhores Hiperparâmetros: {'clf__C': 10.0, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+Acurácia Média (Validação): 0.863756
+Precisão Média (Validação): 0.863173
+Recall/Cobertura Média (Validação): 0.863757
+F1-Score (Macro) Médio (Validação): 0.863036
+Tempo de Execução (CV): 45.03 s
+--------------------------------------------------
+
+Modelo: Random Forest
+Melhores Hiperparâmetros: {'clf__max_depth': None, 'clf__n_estimators': 200, 'tfidf__min_df': 5, 'tfidf__ngram_range': (1, 1)}
+Acurácia Média (Validação): 0.815344
+Precisão Média (Validação): 0.814748
+Recall/Cobertura Média (Validação): 0.815347
+F1-Score (Macro) Médio (Validação): 0.813628
+Tempo de Execução (CV): 735.30 s
+--------------------------------------------------
+
+Modelo: KNN (Vizinhos)
+Melhores Hiperparâmetros: {'clf__n_neighbors': 5, 'clf__weights': 'distance', 'tfidf__min_df': 5, 'tfidf__ngram_range': (1, 1)}
+Acurácia Média (Validação): 0.659654
+Precisão Média (Validação): 0.677530
+Recall/Cobertura Média (Validação): 0.659655
+F1-Score (Macro) Médio (Validação): 0.656037
+Tempo de Execução (CV): 504.38 s
+--------------------------------------------------
+
+RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
+Acurácia (Teste): 0.867345
+Precisão (Teste): 0.866809
+Recall/Cobertura (Teste): 0.867345
+F1-Score (Teste): 0.866731
+============================================================
+
+--- DETALHAMENTO POR CLASSE (PRECISÃO E COBERTURA) ---
+              precision    recall  f1-score   support
+
+       grave       0.89      0.93      0.91     10679
+        leve       0.86      0.86      0.86     10680
+    moderado       0.85      0.81      0.83     10679
+
+    accuracy                           0.87     32038
+   macro avg       0.87      0.87      0.87     32038
+weighted avg       0.87      0.87      0.87     32038
+
+============================================================

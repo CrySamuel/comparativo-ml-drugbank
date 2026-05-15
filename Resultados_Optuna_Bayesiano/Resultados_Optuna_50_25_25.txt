@@ -2,31 +2,75 @@ RESULTADOS OTIMIZAÇÃO BAYESIANA (OPTUNA) - SPLIT 50_25_25
 ============================================================
 
 Modelo: SVM (Linear)
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__C': 8.360028544714693}
-Acurácia Média (Validação): 0.855794
-Recall Médio (Validação): 0.855796
-F1-Score (Macro) (Validação): 0.854964
-Tempo de Busca (Optuna): 23.51 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 3, 'clf__C': 14.247067561614177}
+Acurácia Média (Validação): 0.855233
+Precisão Média (Validação): 0.854737
+Recall/Cobertura Média (Validação): 0.855234
+F1-Score (Macro) (Validação): 0.854385
+Tempo de Busca (Optuna): 14.65 s
+--------------------------------------------------
+
+Modelo: Random Forest
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__n_estimators': 163}
+Acurácia Média (Validação): 0.807308
+Precisão Média (Validação): 0.806822
+Recall/Cobertura Média (Validação): 0.807309
+F1-Score (Macro) (Validação): 0.805919
+Tempo de Busca (Optuna): 2048.00 s
+--------------------------------------------------
+
+Modelo: XGBoost
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 4, 'clf__n_estimators': 250, 'clf__max_depth': 12, 'clf__learning_rate': 0.29722009710084357}
+Acurácia Média (Validação): 0.802476
+Precisão Média (Validação): 0.801654
+Recall/Cobertura Média (Validação): 0.802478
+F1-Score (Macro) (Validação): 0.801404
+Tempo de Busca (Optuna): 1404.44 s
 --------------------------------------------------
 
 Modelo: Complement Naive Bayes
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__alpha': 0.23502740347252937}
-Acurácia Média (Validação): 0.822234
-Recall Médio (Validação): 0.822235
-F1-Score (Macro) (Validação): 0.821218
-Tempo de Busca (Optuna): 13.63 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 3, 'clf__alpha': 0.41541857264890025}
+Acurácia Média (Validação): 0.821148
+Precisão Média (Validação): 0.822227
+Recall/Cobertura Média (Validação): 0.821149
+F1-Score (Macro) (Validação): 0.820086
+Tempo de Busca (Optuna): 20.19 s
+--------------------------------------------------
+
+Modelo: KNN (Vizinhos)
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 2), 'tfidf__min_df': 2, 'clf__n_neighbors': 7, 'clf__weights': 'distance'}
+Acurácia Média (Validação): 0.668177
+Precisão Média (Validação): 0.705817
+Recall/Cobertura Média (Validação): 0.668182
+F1-Score (Macro) (Validação): 0.660321
+Tempo de Busca (Optuna): 513.52 s
 --------------------------------------------------
 
 Modelo: Regressão Logística
-Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 3, 'clf__C': 12.163013695810811}
-Acurácia Média (Validação): 0.858753
-Recall Médio (Validação): 0.858755
-F1-Score (Macro) (Validação): 0.858038
-Tempo de Busca (Optuna): 37.58 s
+Melhores Hiperparâmetros: {'tfidf__ngram_range': (1, 1), 'tfidf__min_df': 2, 'clf__C': 14.347087216743631}
+Acurácia Média (Validação): 0.859353
+Precisão Média (Validação): 0.858786
+Recall/Cobertura Média (Validação): 0.859354
+F1-Score (Macro) (Validação): 0.858629
+Tempo de Busca (Optuna): 27.48 s
 --------------------------------------------------
 
 RESULTADO FINAL NO CONJUNTO DE TESTE (MELHOR MODELO: Regressão Logística)
-Acurácia (Teste): 0.861284
-Recall (Teste): 0.861284
-F1-Score (Teste): 0.860573
+Acurácia (Teste): 0.862033
+Precisão (Teste): 0.861521
+Recall/Cobertura (Teste): 0.862033
+F1-Score (Teste): 0.861325
+============================================================
+
+--- DETALHAMENTO POR CLASSE (PRECISÃO E COBERTURA) ---
+              precision    recall  f1-score   support
+
+       grave       0.88      0.93      0.90     17799
+        leve       0.86      0.85      0.85     17799
+    moderado       0.85      0.81      0.83     17799
+
+    accuracy                           0.86     53397
+   macro avg       0.86      0.86      0.86     53397
+weighted avg       0.86      0.86      0.86     53397
+
 ============================================================
